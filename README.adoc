@@ -1,1 +1,3 @@
 # microprofile-sample-app
+
+A sample app to integrate different Jakarta EE - Eclipse microprofile components.
