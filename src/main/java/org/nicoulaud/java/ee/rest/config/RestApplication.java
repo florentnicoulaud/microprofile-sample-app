@@ -1,4 +1,4 @@
-package org.nicoulaud.ee.rest.config;
+package org.nicoulaud.java.ee.rest.config;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
