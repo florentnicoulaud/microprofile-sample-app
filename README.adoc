@@ -1,3 +1,5 @@
 # microprofile-sample-app
 
-A sample app to integrate different Jakarta EE - Eclipse microprofile components.
+A Java EE 7 - Eclipse microprofile sample app that integrates different components such as : JPA, Lombok, Spring Data JPA, JAX-RS.
+
+This app has been tested for deployment on Wildfly 13.0.0.Final.
