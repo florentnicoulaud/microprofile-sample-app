@@ -7,8 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
 @Entity
@@ -17,8 +15,6 @@ public class Book {
 
     @Id
     @GeneratedValue
-    @Getter
-    @Setter
     private Integer id;
     @Column
     private String title;
