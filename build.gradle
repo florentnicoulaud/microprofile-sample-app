@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'maven'
+    id 'war'
+}
+
+configurations {
+    install
+}
+
+apply plugin: 'java'
+
+group = 'org.nicoulaud.java.ee'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+repositories {
+     mavenCentral()
+}
+dependencies {
+    compile group: 'javax', name: 'javaee-api', version:'7.0'
+    compile group: 'org.projectlombok', name: 'lombok', version:'1.18.0'
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version:'2.0.8.RELEASE'
+    compile group: 'com.h2database', name: 'h2', version:'1.4.197'
+}
