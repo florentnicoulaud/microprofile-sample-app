@@ -1,5 +1,45 @@
-# microprofile-sample-app
+= microprofile-sample-app
 
 A Java EE 7 - Eclipse microprofile sample app that integrates different components such as : JPA, Lombok, Spring Data JPA, JAX-RS.
 
-This app has been tested for deployment on Wildfly 13.0.0.Final.
+This app has been tested for deployment on Wildfly 13.0.0.Final and Thorntail (with the uber jar).
+
+== Build and run
+
+This project is bundled with 2 different `pom.xml` and a `build.gradle`.
+
+=== Maven
+
+==== pom-jee.xml
+You can use the `pom-jee.xml` (after renaming it to `pom.xml`) to build the standard war that can be deployed to your app server.
+
+[source, shell]
+$ mvn clean package
+
+You can also deploy it directly into your running Wildfly server with the wildfly maven plugin.
+
+[source, shell]
+$ mvn wildfly:deploy
+
+
+==== pom-thorntail.xml
+Alternatively, you can create an uber jar with http://thorntail.io[Thorntail] and run it directly from the command line without the need to use an appserver. Rename `pom-thorntail.xml` to `pom.xml` then :
+
+[source, shell]
+$ mvn clean package
+$ java -jar target/microprofile-sample-app-1.0-SNAPSHOT-thorntail.jar
+
+Or you can also run it directly with the thorntail maven plugin :
+
+[source, shell]
+$ mvn clean thorntail:run
+
+=== Gradle
+
+== Use
+
+=== Wildfly
+To access the application running in the Wildfly server, use this address : http://localhost:8080/microprofile-sample-app-1.0-SNAPSHOT/rest/books/
+
+=== Thorntail
+To access the application running with Thorntail, use this address : http://localhost:8080/rest/books/

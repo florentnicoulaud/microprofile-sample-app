@@ -9,18 +9,45 @@
     <packaging>war</packaging>
 
     <properties>
+        <thorntail.version>2.0.0.Final</thorntail.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencyManagement>
+      <dependencies>
+        <dependency>
+          <groupId>io.thorntail</groupId>
+          <artifactId>bom-all</artifactId>
+          <version>${thorntail.version}</version>
+          <scope>import</scope>
+          <type>pom</type>
+        </dependency>
+      </dependencies>
+    </dependencyManagement>
+
     <dependencies>
 
-        <!-- Java EE -->
+        <!-- Java EE - thorntail fractions -->
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
+          <groupId>io.thorntail</groupId>
+          <artifactId>cdi</artifactId>
+        </dependency>
+
+        <dependency>
+          <groupId>io.thorntail</groupId>
+          <artifactId>ejb</artifactId>
+        </dependency>
+
+        <dependency>
+          <groupId>io.thorntail</groupId>
+          <artifactId>jaxrs</artifactId>
+        </dependency>
+
+        <dependency>
+          <groupId>io.thorntail</groupId>
+          <artifactId>jpa</artifactId>
         </dependency>
 
         <!-- Lombok -->
@@ -66,6 +93,19 @@
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
+            </plugin>
+
+            <plugin>
+              <groupId>io.thorntail</groupId>
+              <artifactId>thorntail-maven-plugin</artifactId>
+              <version>${thorntail.version}</version>
+              <executions>
+                <execution>
+                  <goals>
+                    <goal>package</goal>
+                  </goals>
+                </execution>
+              </executions>
             </plugin>
         </plugins>
     </build>

@@ -1,4 +1,4 @@
-package org.nicoulaud.java.ee.repository;
+package org.nicoulaud.java.ee.repository.config;
 
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;

@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -40,29 +41,21 @@ public class BookEndpoint {
     @Path("{id}")
     public Response one(@PathParam("id") int id) {
         logger.info("get one: " + id);
-        return Response.ok(this.bookRepository.getOne(id).getTitle()).build();
+        return Response.ok(this.bookRepository.getOne(id)).build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(Book book) {
-        return Response.ok(this.bookRepository.save(book)).build();
+        this.bookRepository.save(book);
+        return Response.status(Response.Status.CREATED).build();
     }
 
-    @POST
-    @Path("generate")
-    public Response generate() {
-        List<Book> books = new ArrayList<>();
-        books.add(new Book("The Running Man"));
-        books.add(new Book("Carrie"));
-        books.add(new Book("Christine"));
-        books.add(new Book("Misery"));
-        books.add(new Book("It"));
-        books.add(new Book("The Shining"));
-        books.add(new Book("The Long Walk"));
-        this.bookRepository.saveAll(books);
-        return Response.ok().build();
+    @DELETE
+    @Path("{id}")
+    public Response delete(@PathParam("id") int id) {
+      this.bookRepository.delete(this.bookRepository.getOne(id));
+      return Response.status(Response.Status.NO_CONTENT).build();
     }
-
 
 }
